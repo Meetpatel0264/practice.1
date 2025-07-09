@@ -171,12 +171,12 @@ int main(){
             cout << "Ener Account Number : ";
             cin >> AccountNumber;
 
-            bool found = false;
+            bool flag = false;
             for (int i = 0; i < account; i++)
             {
                 if (amount[i].getAccountNumber() == AccountNumber)
                 {
-                    found = true;
+                    flag = true;
                     cout << "Enter amount you want to deposite : ";
                     cin >> amount5;
                     cin.ignore();
