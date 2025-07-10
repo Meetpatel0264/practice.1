@@ -10,80 +10,80 @@ protected:
     string accountHolderName;
 
 public:
-    void createAccount(int acnumber, string name) {
-        this->accountNumber = acnumber;
-        this->accountHolderName = name;
-        cout << "\nAccount Created Successfully!";
+    void createAccount(int accountNumber, string accountHolderName) {
+        this->accountNumber = accountNumber;
+        this->accountHolderName = accountHolderName;
+        cout << "Account Created Successfully" << endl;
     }
 
     void displayAccountInfo() {
-        cout << "\n---------Account Details-----------";
-        cout << "\nAccount Number : " << accountNumber;
-        cout << "\nAccount Holder Name : " << accountHolderName;
-        cout << "\nAccount Balance : " << balance;
-        cout << "\n-----------------------------------";
+        cout << "\n-----------------------------------\n";
+        cout << "Account Number : " << accountNumber << endl;
+        cout << "Account Holder Name : " << accountHolderName << endl;
+        cout << "Account Balance : " << balance << endl;
+        cout << "-----------------------------------\n\n";
     }
 
-    int getAccNumber() const {
-        return accountNumber;
-    }
-
-    void deposit(double amount) {
+    void deposit(int amount) {
         balance += amount;
-        cout << "Amount Deposited Successfully!";
+        cout << "Amount Deposited Successfully << endl";
     }
 
-    void withdraw(double amount) {
+    void withdraw(int amount) {
         if (balance >= amount) {
             balance -= amount;
-            cout << "Amount Withdrawn Successfully!";
+            cout << "Amount Withdrawn Successfully" << endl;
         } else {
-            cout << "Insufficient Balance!";
+            cout << "Insufficient Balance" << endl;
         }
     }
 
-    double calculateInterest(double) const {
+    int calculateInterest(int) {
         return 0;
     }
 
-    string getAccountType() const {
+    int getAccNumber() {
+        return accountNumber;
+    }
+
+    string getAccountType() {
         return "General";
     }
 };
 
 class SavingAccount : public BankAccount {
 public:
-    string getAccountType() const {
+    string getAccountType() {
         return "Saving";
     }
 
-    double calculateInterest(double rate) const {
+    float calculateInterest(float rate) {
         return (balance * rate) / 100;
     }
 };
 
 class CurrentAccount : public BankAccount {
 public:
-    string getAccountType() const {
+    string getAccountType() {
         return "Current";
     }
 
-    double calculateInterest(double) const {
+    double calculateInterest() {
         return 0;
     }
 };
 
 class FixedDepositAccount : public BankAccount {
 public:
-    string getAccountType() const {
+    string getAccountType() {
         return "Fixed Deposit";
     }
 
-    void withdraw(double) {
-        cout << "Withdrawals not allowed from Fixed Deposit Account!";
+    void withdraw() {
+        cout << "Withdrawals not allowed from Fixed Deposit Account" << endl;
     }
 
-    double calculateInterest(double rate) const {
+    double calculateInterest(double rate) {
         return (balance * rate) / 100;
     }
 };
@@ -103,16 +103,15 @@ int main() {
     int choice;
 
     do {
-        cout << "\n\n--- WELCOME TO SBI BANK ---";
-        cout << "\n1. Create Saving Account";
-        cout << "\n2. Create Current Account";
-        cout << "\n3. Create Fixed Deposit Account";
-        cout << "\n4. Show All Account Details";
-        cout << "\n5. Deposit Money";
-        cout << "\n6. Withdraw Money";
-        cout << "\n7. Calculate Interest";
-        cout << "\n8. Exit";
-        cout << "\nEnter your choice: ";
+        cout << "1. Create Saving Account" << endl;
+        cout << "2. Create Current Account" << endl;
+        cout << "3. Create Fixed Deposit Account" << endl;
+        cout << "4. Show All Account Details" << endl;
+        cout << "5. Deposit Money" << endl;
+        cout << "6. Withdraw Money" << endl;
+        cout << "7. Calculate Interest" << endl;
+        cout << "8. Exit" << endl;
+        cout << "Enter your choice: ";
         cin >> choice;
 
         switch (choice) {
@@ -123,7 +122,7 @@ int main() {
             cin >> accNo;
 
             if (findAccountByNumber(accounts, accountCount, accNo)) {
-                cout << "Account with this number already exists!";
+                cout << "Account with this number already exists!" << endl;
                 break;
             }
 
@@ -211,7 +210,6 @@ int main() {
                 cout << "No accounts found.";
             } else {
                 for (int i = 0; i < accountCount; ++i) {
-                    cout << "\n----------------------- " << accounts[i]->getAccountType() << " Account ----------------------";
                     accounts[i]->displayAccountInfo();
                 }
             }
@@ -278,4 +276,3 @@ int main() {
 
     return 0;
 }
-
