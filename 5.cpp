@@ -15,8 +15,7 @@ public:
     }
 };
 
-class LinkedList
-{
+class LinkedList {
 public:
     Node *head;
     Node *tail;
@@ -68,8 +67,7 @@ public:
         }
     }
 
-    void addAtAnyPosition(int data, int pos)
-    {
+    void addAtAnyPosition(int data, int pos){
 
         if (pos < 0 || pos > count)
         {
@@ -109,6 +107,14 @@ public:
 
     void display()
     {
+
+        if(count <= 0){
+             cout << "\n-----------------------------------\n";
+            cout << "Linked List is Empty...." << endl;
+            cout << "-----------------------------------\n\n";
+
+            return;
+        }
         Node *temp = this->head;
 
         cout << "\n-----------------------------------\n";
